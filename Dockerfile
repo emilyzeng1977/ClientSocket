@@ -6,3 +6,7 @@ FROM maven:3.5-jdk-8-alpine
 WORKDIR /app
 COPY --from=0 /app/ClientSocket /app
 RUN mvn package
+
+FROM openjdk:8-jre-alpine
+WORKDIR /app
+COPY --from=1 /app/target /app
